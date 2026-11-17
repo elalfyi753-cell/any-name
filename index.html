@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aluminum Fins in Wax | Solar Cooling Project</title>
+<style>
+:root {
+  --navy: #101c2b;
+  --navy2: #20384a;
+  --mint: #58e0bd;
+  --green: #129b82;
+  --coral: #ff8069;
+  --amber: #f1b74d;
+  --cream: #f5f3eb;
+  --paper: #fffefa;
+  --gray: #71807a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+}
+a { color: inherit; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 15px 6%;
+  background: var(--navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand { color: var(--mint); font-weight: 800; letter-spacing: 2px; }
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { color: #c3d2d0; text-decoration: none; font-size: 13px; }
+nav a:hover { color: var(--mint); }
+.hero {
+  padding: 70px 7%;
+  background:
+    radial-gradient(circle at 85% 15%, #275044 0, transparent 28%),
+    var(--navy);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+.kicker {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero .kicker { color: var(--mint); }
+h1 { font-size: clamp(42px, 6vw, 74px); line-height: 1; margin: 18px 0; letter-spacing: -3px; }
+h1 em { color: var(--mint); font-style: normal; }
+.lede { max-width: 560px; color: #b7c7c7; line-height: 1.7; }
+.button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 17px;
+  border-radius: 7px;
+  background: var(--mint);
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 800;
+}
+.diagram {
+  border: 1px solid #ffffff2b;
+  border-radius: 16px;
+  padding: 18px;
+  background: #ffffff08;
+}
+.diagram svg { width: 100%; height: auto; display: block; }
+.diagram-note { color: #8ea6a6; font-size: 11px; }
+.stats {
+  padding: 24px 7%;
+  background: var(--mint);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.stat { border-left: 1px solid #20384a55; padding-left: 18px; }
+.stat strong { display: block; font-size: 30px; }
+.stat span { font-size: 12px; color: #315c58; }
+section { padding: 76px 7%; }
+h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.08; margin: 12px 0 24px; letter-spacing: -1.5px; }
+h2 span { color: #80928c; }
+.grid2 { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+.card {
+  border-radius: 13px;
+  padding: 25px;
+  background: var(--paper);
+  border: 1px solid #dfe5dc;
+}
+.card.dark { background: var(--navy); color: white; }
+.card h3 { margin: 7px 0 10px; }
+.card p { color: var(--gray); line-height: 1.65; }
+.card.dark p { color: #b8c9c6; }
+.tag { color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+.warning {
+  margin-top: 20px;
+  padding: 15px 18px;
+  border-left: 3px solid var(--coral);
+  background: #ffe9df;
+  color: #6c5047;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.step { padding: 22px; border-radius: 12px; background: #e9ece3; }
+.step b { color: var(--green); font-size: 11px; letter-spacing: 1px; }
+.step p { color: var(--gray); line-height: 1.6; }
+.evidence { background: #eeeee7; }
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.chart { background: var(--paper); border: 1px solid #dfe5dc; border-radius: 12px; padding: 22px; }
+.barrow { display: grid; grid-template-columns: 105px 1fr 55px; align-items: center; gap: 10px; margin: 20px 0; font-size: 12px; }
+.track { height: 14px; border-radius: 8px; background: #e8ece4; overflow: hidden; }
+.bar { height: 100%; border-radius: 8px; background: var(--coral); }
+.bar.cool { background: var(--green); }
+.barrow strong { text-align: right; font-family: monospace; }
+.tilt { margin-top: 15px; padding: 24px; border-radius: 13px; background: var(--navy); color: white; }
+.tilt-row { display: grid; grid-template-columns: 50px 1fr 75px 1fr 65px; gap: 10px; align-items: center; padding: 12px 0; border-top: 1px solid #ffffff22; font-size: 12px; }
+.tilt-row b { color: var(--amber); }
+.mini-track { height: 7px; border-radius: 6px; background: #ffffff22; overflow: hidden; }
+.mini-track i { display: block; height: 100%; background: var(--coral); border-radius: 6px; }
+.mini-track.green i { background: var(--mint); }
+.smallnote { color: #91a7a5; font-size: 11px; }
+.findings { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+.finding { padding: 18px; border-radius: 10px; background: var(--paper); }
+.finding p { margin-bottom: 0; color: var(--gray); font-size: 13px; line-height: 1.6; }
+.experiment { background: var(--navy); color: white; }
+.experiment .kicker { color: var(--mint); }
+.setups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.setup {
+  min-height: 135px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #ffffff0b;
+  border: 1px solid #ffffff20;
+}
+.setup b { color: var(--amber); font-size: 11px; }
+.setup h3 { margin: 10px 0 4px; }
+.setup p { color: #aabbb9; font-size: 12px; }
+.control { background: #f1b74d18; }
+.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+.rule { padding: 22px; border-radius: 11px; background: #ffffff0a; border: 1px solid #ffffff20; }
+.rule li { margin: 9px 0; color: #b8c9c6; font-size: 13px; }
+.formulas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.formula { padding: 22px; border-radius: 11px; background: var(--paper); border: 1px solid #dfe5dc; }
+.formula strong { display: block; margin: 18px 0; color: #1e6858; font-size: 21px; }
+.status {
+  margin: 0 7% 70px;
+  padding: 30px;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(120deg, #20384a, var(--navy));
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+.status em { color: var(--coral); font-style: normal; }
+.status p { max-width: 540px; color: #b8c9c6; line-height: 1.6; }
+.sources { background: var(--navy); color: white; }
+.source-list { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.source {
+  display: grid;
+  grid-template-columns: 35px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  background: #ffffff08;
+}
+.source-id { color: var(--navy); background: var(--mint); border-radius: 50%; width: 27px; height: 27px; display: grid; place-items: center; font-size: 11px; }
+.source h3 { margin: 0 0 3px; font-size: 12px; }
+.source p { margin: 0; color: #a7b8b5; font-size: 10px; line-height: 1.5; }
+.source a { color: var(--mint); text-decoration: none; font-size: 11px; }
+footer { padding: 22px 7%; background: #0b1522; color: #8ba19e; font-size: 11px; display: flex; justify-content: space-between; gap: 15px; }
+@media (max-width: 800px) {
+  header { flex-wrap: wrap; }
+  nav { order: 3; width: 100%; justify-content: space-between; }
+  .hero, .grid2, .charts, .rules { grid-template-columns: 1fr; }
+  .hero { padding-top: 48px; }
+  .steps, .formulas { grid-template-columns: 1fr; }
+  .status { display: block; }
+}
+@media (max-width: 560px) {
+  section { padding: 58px 20px; }
+  .hero { padding: 48px 20px 35px; }
+  .stats { padding: 20px; grid-template-columns: 1fr; gap: 15px; }
+  .stat { border-left: 0; border-top: 1px solid #20384a55; padding: 13px 0 0; }
+  .setups, .findings, .source-list { grid-template-columns: 1fr; }
+  .tilt-row { grid-template-columns: 38px 1fr 52px 1fr 45px; gap: 5px; font-size: 10px; }
+  .source { grid-template-columns: 30px 1fr; }
+  .source a { grid-column: 2; }
+  footer { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">THERMAL LAB / 2026</a>
+  <nav>
+    <a href="#question">Question</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#experiment">Experiment</a>
+    <a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <p class="kicker">Solar thermal / student research</p>
+      <h1>Can aluminum fins<br><em>cool a solar panel?</em></h1>
+      <p class="lede">A phase-change wax experiment about moving heat, comparing fin shapes, and finding out what the numbers actually support.</p>
+      <a class="button" href="#evidence">Explore the research ↓</a>
+    </div>
+    <div class="diagram">
+      <svg viewBox="0 0 600 350" role="img" aria-label="Diagram of a solar panel, wax backplate, and aluminum fins">
+        <circle cx="510" cy="55" r="25" fill="#f1b74d"/>
+        <path d="M495 95 400 145M520 96 455 146M545 94 500 145" stroke="#f1b74d" stroke-width="3"/>
+        <path d="M90 90 380 45 425 205 135 250Z" fill="#234c68" stroke="#91c8ce" stroke-width="3"/>
+        <g stroke="#6c9cae" stroke-width="2">
+          <path d="m148 81 42 150M205 72l42 150M262 63l42 150M319 54l42 150"/>
+          <path d="m104 138 305-48M120 194l305-48"/>
+        </g>
+        <path d="M135 254 425 210 425 240 135 286Z" fill="#dce6e5"/>
+        <path d="M135 288 425 244 425 320 135 335Z" fill="#e99d45"/>
+        <g stroke="#fff0c4" stroke-width="8" stroke-linecap="round">
+          <path d="M165 327v-65M215 320v-65M265 312v-65M315 304v-65M365 297v-65"/>
+        </g>
+        <g fill="#f4f7f1" font-family="Arial" font-size="13" font-weight="bold">
+          <text x="171" y="150">PHOTOVOLTAIC PANEL</text>
+          <text x="440" y="274" fill="#58e0bd">PARAFFIN WAX</text>
+          <text x="25" y="315" fill="#ff8069">ALUMINUM FINS</text>
+        </g>
+      </svg>
+      <p class="diagram-note">Concept drawing — the prototype has not been measured.</p>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><strong>36.62°C</strong><span>Published average with PCM + aluminum fins [1]</span></div>
+    <div class="stat"><strong>13.1°C</strong><span>Maximum drop reported at 30° tilt [2]</span></div>
+    <div class="stat"><strong>2.3°C</strong><span>Simulated drop when fin count increased from 1 to 2 [3]</span></div>
+  </div>
+
+  <section id="question">
+    <p class="kicker">01 / The research question</p>
+    <h2>One panel. One wax backplate.<br><span>Six different cooling setups.</span></h2>
+    <div class="grid2">
+      <article class="card dark">
+        <span class="tag">THE QUESTION</span>
+        <h3>How does aluminum-fin geometry inside a paraffin-wax backplate affect a solar panel's temperature and electrical power under identical illumination?</h3>
+      </article>
+      <article class="card">
+        <span class="tag">HYPOTHESIS / NOT A FINDING</span>
+        <h3>Pin or perforated fins may help warm wax circulate.</h3>
+        <p>The prediction is that they will produce the greatest peak-temperature reduction. It is a testable guess, not an established result.</p>
+      </article>
+    </div>
+  </section>
+
+  <section style="background:#e9ece3">
+    <p class="kicker">02 / How the cooling idea works</p>
+    <h2>Heat takes a<br><span>different route.</span></h2>
+    <div class="steps">
+      <article class="step"><b>STEP 01</b><h3>Panel warms</h3><p>Light reaches the PV module. Part of the absorbed energy becomes heat.</p></article>
+      <article class="step"><b>STEP 02</b><h3>Fins conduct</h3><p>Aluminum inserts transfer heat away from the backplate and into the wax.</p></article>
+      <article class="step"><b>STEP 03</b><h3>Wax stores heat</h3><p>As paraffin melts, it absorbs energy. Cooling may fade after the wax has melted.</p></article>
+    </div>
+  </section>
+
+  <section class="evidence" id="evidence">
+    <p class="kicker">03 / Published evidence</p>
+    <h2>The numbers have context.<br><span>And limits.</span></h2>
+    <p class="warning">These studies use different panels, wax, tilt angles, and test methods. They provide context, not a head-to-head ranking of the six designs in this project.</p>
+
+    <div class="charts">
+      <article class="chart">
+        <span class="tag">FIELD EXPERIMENT / SOURCE [1]</span>
+        <h3>Average panel temperature</h3>
+        <div class="barrow"><span>Reference</span><div class="track"><div class="bar" style="width:89%"></div></div><strong>48.75°C</strong></div>
+        <div class="barrow"><span>PCM + Al fins</span><div class="track"><div class="bar cool" style="width:67%"></div></div><strong>36.62°C</strong></div>
+        <p>Published average difference: 12.13°C lower with PCM + aluminum fins.</p>
+      </article>
+      <article class="chart">
+        <span class="tag">SAME STUDY / SOURCE [1]</span>
+        <h3>Average electrical power</h3>
+        <div class="barrow"><span>Reference</span><div class="track"><div class="bar" style="width:78%"></div></div><strong>10.95 W</strong></div>
+        <div class="barrow"><span>PCM + Al fins</span><div class="track"><div class="bar cool" style="width:87%"></div></div><strong>12.19 W</strong></div>
+        <p>Reported power difference: +11.33% in that study.</p>
+      </article>
+    </div>
+
+    <div class="tilt">
+      <span class="tag">ANGLE CHANGES THE OUTCOME / SOURCE [2]</span>
+      <h3>Reported tilt-test results</h3>
+      <p class="smallnote">Maximum values reported around 11:30 in a study of two 30 W PV panels.</p>
+      <div class="tilt-row"><b>TILT</b><span>TEMP DROP</span><span></span><span>EFFICIENCY GAIN</span><span></span></div>
+      <div class="tilt-row"><b>30°</b><div class="mini-track"><i style="width:100%"></i></div><strong>13.1°C</strong><div class="mini-track green"><i style="width:100%"></i></div><strong>6.85%</strong></div>
+      <div class="tilt-row"><b>45°</b><div class="mini-track"><i style="width:98.5%"></i></div><strong>12.9°C</strong><div class="mini-track green"><i style="width:99.6%"></i></div><strong>6.82%</strong></div>
+      <div class="tilt-row"><b>60°</b><div class="mini-track"><i style="width:64.9%"></i></div><strong>8.5°C</strong><div class="mini-track green"><i style="width:61.3%"></i></div><strong>4.2%</strong></div>
+    </div>
+
+    <div class="findings">
+      <article class="finding"><h3>Fin geometry [3, 7]</h3><p>One simulation found a fractal fin about 2°C cooler than a straight fin. Another PCM model favored rectangular over tree-like fins for natural convection. The results depend on the model and geometry.</p></article>
+      <article class="finding"><h3>Different device [5]</h3><p>Perforated copper fins improved average Nusselt number by 30% and shortened melt time by 7% in a non-PV thermal-storage experiment.</p></article>
+    </div>
+  </section>
+
+  <section class="experiment" id="experiment">
+    <p class="kicker">04 / The fair test</p>
+    <h2>Change one thing.<br><em>Keep the rest steady.</em></h2>
+    <p class="lede">Change fin geometry. Keep the light, panel angle, electrical load, wax mass, and starting temperature consistent.</p>
+    <div class="setups">
+      <article class="setup control"><b>01 / CONTROL</b><h3>Bare panel</h3><p>No cooling insert.</p></article>
+      <article class="setup control"><b>02 / CONTROL</b><h3>Plain wax</h3><p>PCM effect without fins.</p></article>
+      <article class="setup"><b>03 / BASELINE</b><h3>Straight fins</h3><p>Simple rectangular baseline.</p></article>
+      <article class="setup"><b>04 / TEST</b><h3>Honeycomb</h3><p>Cellular fin network.</p></article>
+      <article class="setup"><b>05 / TEST</b><h3>Tree-like</h3><p>Branching heat paths.</p></article>
+      <article class="setup"><b>06 / TEST</b><h3>Pin / perforated</h3><p>Open paths for wax flow.</p></article>
+    </div>
+    <div class="rules">
+      <article class="rule"><span class="tag">HOLD CONSTANT</span><ul>
+        <li>Same panel, wiring, and fixed electrical load</li>
+        <li>Same light source, distance, tilt, and duration</li>
+        <li>Same wax batch, mass, backplate, and contact method</li>
+        <li>Match aluminum mass across fin shapes within 1%</li>
+        <li>Begin at the same panel and wax temperature</li>
+      </ul></article>
+      <article class="rule"><span class="tag">MEASURE + REPEAT</span><ul>
+        <li>Log temperature, voltage, current, and irradiance every 1-2 minutes</li>
+        <li>Run for at least 90 minutes to capture the melt cycle</li>
+        <li>Repeat each setup for at least 3 trials</li>
+        <li>Cool and re-solidify the wax between trials</li>
+      </ul></article>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">05 / How results will be read</p>
+    <h2>Measure temperature<br><span>and power together.</span></h2>
+    <div class="formulas">
+      <article class="formula"><span class="tag">ELECTRICAL POWER</span><strong>P = V × I</strong><p>Voltage multiplied by current.</p></article>
+      <article class="formula"><span class="tag">PEAK TEMPERATURE DROP</span><strong>ΔT = Tbare − Tcooled</strong><p>Compare the same sensor location and run point.</p></article>
+      <article class="formula"><span class="tag">POWER GAIN</span><strong>(Pcooled − Pbare) / Pbare × 100</strong><p>Report the average and spread across trials.</p></article>
+    </div>
+    <p class="warning"><b>Fair-winner rule:</b> if two designs differ by less than the variation between their trials, report that the results are too close to distinguish instead of forcing a ranking.</p>
+  </section>
+
+  <aside class="status">
+    <div><span class="tag">PROJECT STATUS</span><h2>Prototype results<br><em>not collected yet.</em></h2></div>
+    <p>The values above come from published research. No project trial measurements or prototype photos are available yet, so the fin-shape winner remains an open question.</p>
+  </aside>
+
+  <section class="sources" id="sources">
+    <p class="kicker">06 / Source library</p>
+    <h2>Follow the evidence.</h2>
+    <div class="source-list">
+      <article class="source" id="source-1"><span class="source-id">[1]</span><div><h3>Agyekum et al. (2021)</h3><p>PV module performance using PCM and aluminum fins. <i>Inventions</i>, 6(4), 69.</p></div><a href="https://doi.org/10.3390/inventions6040069">DOI ↗</a></article>
+      <article class="source" id="source-2"><span class="source-id">[2]</span><div><h3>Hussain et al. (2023)</h3><p>Experimental study of PCM cooling for solar panels. <i>Engineering Proceedings</i>, 45(1), 43.</p></div><a href="https://doi.org/10.3390/engproc2023045043">DOI ↗</a></article>
+      <article class="source" id="source-3"><span class="source-id">[3]</span><div><h3>Jiang et al. (2023)</h3><p>Fin structures and fin counts in PV panels integrated with PCM. <i>Energy</i>, 283, 129143.</p></div><a href="https://doi.org/10.1016/j.energy.2023.129143">DOI ↗</a></article>
+      <article class="source" id="source-4"><span class="source-id">[4]</span><div><h3>Bayrak, Oztop &amp; Selimefendigil (2020)</h3><p>Experimental comparison of PV cooling methods. <i>Energy Conversion and Management</i>, 212, 112789.</p></div><a href="https://doi.org/10.1016/j.enconman.2020.112789">DOI ↗</a></article>
+      <article class="source" id="source-5"><span class="source-id">[5]</span><div><h3>Karami &amp; Kamkari (2020)</h3><p>Perforated fins in a shell-and-tube thermal-storage system. <i>Energy Conversion and Management</i>, 210, 112679.</p></div><a href="https://doi.org/10.1016/j.enconman.2020.112679">DOI ↗</a></article>
+      <article class="source" id="source-6"><span class="source-id">[6]</span><div><h3>Qasem et al. (2024)</h3><p>Tree-shaped fins in thermal-storage units. <i>International Communications in Heat and Mass Transfer</i>, 151, 107220.</p></div><a href="https://doi.org/10.1016/j.icheatmasstransfer.2023.107220">DOI ↗</a></article>
+      <article class="source" id="source-7"><span class="source-id">[7]</span><div><h3>Yildiz et al. (2020)</h3><p>Natural convection with rectangular and tree-like fins. <i>Energy</i>, 207, 118223.</p></div><a href="https://doi.org/10.1016/j.energy.2020.118223">DOI ↗</a></article>
+      <article class="source" id="source-8"><span class="source-id">[8]</span><div><h3>Li et al. (2022)</h3><p>PCM-honeycomb PV-battery system. <i>International Journal of Photoenergy</i>, Article 4697980.</p></div><a href="https://doi.org/10.1155/2022/4697980">DOI ↗</a></article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>THERMAL LAB / ALUMINUM FINS IN WAX</span>
+  <span>SCHEMATIC VISUALS / NO PROJECT PHOTOS</span>
+  <a href="#top">BACK TO TOP ↑</a>
+</footer>
+
+</body>
+</html>
